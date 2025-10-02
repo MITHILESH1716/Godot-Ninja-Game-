@@ -1,0 +1,101 @@
+[gd_scene load_steps=18 format=3 uid="uid://cpctp1wy4rbgt"]
+
+[ext_resource type="Texture2D" uid="uid://bawaxiw60f4rk" path="res://ENEMY/keyframes/long_metal/long_metal_spike_01.png" id="1_i4xu8"]
+[ext_resource type="Texture2D" uid="uid://dkk0x5whsyfjy" path="res://ENEMY/keyframes/long_metal/long_metal_spike_02.png" id="2_ma46s"]
+[ext_resource type="Texture2D" uid="uid://ropdvxv5t4u8" path="res://ENEMY/keyframes/long_metal/long_metal_spike_03.png" id="3_053f7"]
+[ext_resource type="Texture2D" uid="uid://dltlcmufr711b" path="res://ENEMY/keyframes/long_metal/long_metal_spike_04.png" id="4_arb28"]
+[ext_resource type="PackedScene" uid="uid://dfqfgwo5lbf5l" path="res://scenes/killzone.tscn" id="5_8js5k"]
+[ext_resource type="Script" path="res://scripts/spike.gd" id="5_u25yt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_almen"]
+atlas = ExtResource("1_i4xu8")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h42rf"]
+atlas = ExtResource("1_i4xu8")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5io0"]
+atlas = ExtResource("1_i4xu8")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgtk4"]
+atlas = ExtResource("1_i4xu8")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8x12"]
+atlas = ExtResource("2_ma46s")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6ct0"]
+atlas = ExtResource("3_053f7")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs130"]
+atlas = ExtResource("4_arb28")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2omeh"]
+atlas = ExtResource("3_053f7")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n6o1"]
+atlas = ExtResource("2_ma46s")
+region = Rect2(0, 0, 78, 116)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okkn1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_almen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h42rf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5io0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgtk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8x12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6ct0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs130")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2omeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n6o1")
+}],
+"loop": true,
+"name": &"spike",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kllhv"]
+size = Vector2(20, 85)
+
+[node name="metal_spike" type="AnimatedSprite2D"]
+z_index = 6
+position = Vector2(0, -13)
+scale = Vector2(0.211711, 0.211711)
+sprite_frames = SubResource("SpriteFrames_okkn1")
+animation = &"spike"
+autoplay = "spike"
+frame = 6
+script = ExtResource("5_u25yt")
+
+[node name="Killzone" parent="." instance=ExtResource("5_8js5k")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_kllhv")
+disabled = true
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

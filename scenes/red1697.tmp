@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw1tb1u6nnckb"]
+
+[ext_resource type="Script" path="res://scripts/red_flag.gd" id="1_hlhpt"]
+[ext_resource type="Texture2D" uid="uid://d4mmklfbayr2d" path="res://Assets/sprites/redflag2.0.png" id="1_x5nt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa68t"]
+
+[node name="redFlag" type="Area2D"]
+script = ExtResource("1_hlhpt")
+
+[node name="Redflag2_0" type="Sprite2D" parent="."]
+position = Vector2(4, -12)
+scale = Vector2(0.0327149, 0.0327149)
+texture = ExtResource("1_x5nt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -10)
+shape = SubResource("RectangleShape2D_xa68t")
+disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

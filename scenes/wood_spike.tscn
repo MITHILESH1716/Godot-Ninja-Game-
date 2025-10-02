@@ -1,0 +1,114 @@
+[gd_scene load_steps=21 format=3 uid="uid://ctvp4t8105bli"]
+
+[ext_resource type="Texture2D" uid="uid://c6nkaa0ds8kkk" path="res://ENEMY/keyframes/long_wood/long_wood_spike_01.png" id="1_plssd"]
+[ext_resource type="Texture2D" uid="uid://65ptwdqvpmbb" path="res://ENEMY/keyframes/long_wood/long_wood_spike_02.png" id="2_mh4e6"]
+[ext_resource type="Texture2D" uid="uid://b1qukgl3fp2go" path="res://ENEMY/keyframes/long_wood/long_wood_spike_03.png" id="3_lu4v8"]
+[ext_resource type="Texture2D" uid="uid://cyijatr323lie" path="res://ENEMY/keyframes/long_wood/long_wood_spike_04.png" id="4_iaqns"]
+[ext_resource type="Texture2D" uid="uid://d1fej1be2bvgr" path="res://ENEMY/keyframes/long_wood/long_wood_spike_05.png" id="5_ym1te"]
+[ext_resource type="Script" path="res://scripts/wood_spike.gd" id="6_e5jb4"]
+[ext_resource type="PackedScene" uid="uid://dfqfgwo5lbf5l" path="res://scenes/killzone.tscn" id="6_fh4nn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvd62"]
+atlas = ExtResource("1_plssd")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaskf"]
+atlas = ExtResource("1_plssd")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hltan"]
+atlas = ExtResource("1_plssd")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhnk1"]
+atlas = ExtResource("1_plssd")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44cbt"]
+atlas = ExtResource("2_mh4e6")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8asnd"]
+atlas = ExtResource("3_lu4v8")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am1j3"]
+atlas = ExtResource("4_iaqns")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w44i7"]
+atlas = ExtResource("5_ym1te")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdk7o"]
+atlas = ExtResource("4_iaqns")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htjqo"]
+atlas = ExtResource("3_lu4v8")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiors"]
+atlas = ExtResource("2_mh4e6")
+region = Rect2(0, 0, 64, 183)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ady4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvd62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaskf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hltan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhnk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44cbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8asnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am1j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w44i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdk7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htjqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiors")
+}],
+"loop": true,
+"name": &"spike",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulwj3"]
+size = Vector2(26.0033, 120.025)
+
+[node name="wood_spike" type="AnimatedSprite2D"]
+z_index = 7
+position = Vector2(1, -13)
+scale = Vector2(0.155059, 0.155059)
+sprite_frames = SubResource("SpriteFrames_ady4u")
+animation = &"spike"
+autoplay = "spike"
+frame_progress = 0.674316
+script = ExtResource("6_e5jb4")
+
+[node name="Killzone" parent="." instance=ExtResource("6_fh4nn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-3.00164, 24.0049)
+shape = SubResource("RectangleShape2D_ulwj3")
+disabled = true

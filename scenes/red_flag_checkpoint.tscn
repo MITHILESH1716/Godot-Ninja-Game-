@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjtisb327cmd3"]
+
+[ext_resource type="Texture2D" uid="uid://d4mmklfbayr2d" path="res://Assets/sprites/redflag2.0.png" id="1_4cayt"]
+[ext_resource type="Script" path="res://scripts/red_flag_checkpoint.gd" id="1_05fec"]
+[ext_resource type="FontFile" uid="uid://bnbjw3as7gea1" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_n0oan"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dpu7"]
+size = Vector2(21, 22)
+
+[node name="redFlagCheckpoint" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_05fec")
+
+[node name="StaticBody2D" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+scale = Vector2(0.0334473, 0.0334473)
+texture = ExtResource("1_4cayt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -10)
+shape = SubResource("RectangleShape2D_8dpu7")
+
+[node name="textCheckpoint" type="Label" parent="."]
+visible = false
+offset_left = -42.0
+offset_top = -48.0
+offset_right = 42.0
+offset_bottom = -25.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n0oan")
+theme_override_font_sizes/font_size = 8
+text = "CHECKPOINT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

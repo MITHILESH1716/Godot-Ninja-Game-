@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2i7u8thngln"]
+
+[ext_resource type="Texture2D" uid="uid://cm67mik7wmkab" path="res://ENEMY/Tileset SpriteSheet/Green Portal Sprite Sheet.png" id="1_gfo4t"]
+[ext_resource type="Script" path="res://scripts/green_portal.gd" id="2_h8mth"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlmgy"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbivb"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai0iq"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dknfi"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r25xc"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au8r0"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c76j"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k8ye"]
+atlas = ExtResource("1_gfo4t")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_em7lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlmgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbivb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai0iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dknfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r25xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au8r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c76j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k8ye")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oq6v"]
+size = Vector2(6, 42)
+
+[node name="GreenPortal" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_h8mth")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_em7lj")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_2oq6v")

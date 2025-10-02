@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcvd8un3djp58"]
+
+[ext_resource type="Script" path="res://scripts/green_enemy_2_0.gd" id="1_clw37"]
+[ext_resource type="Texture2D" uid="uid://bo65po54nrkjv" path="res://Assets/sprites/slime_green.png" id="1_iv4k6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eggm1"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mypp7"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivodg"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpsct"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1ruc"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nba2w"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ulhk"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwvb0"]
+atlas = ExtResource("1_iv4k6")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jeemn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eggm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mypp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivodg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpsct")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1ruc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nba2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ulhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwvb0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ab1"]
+size = Vector2(12, 13)
+
+[node name="GreenEnemy2_0" type="Area2D" groups=["Sword"]]
+collision_mask = 2
+script = ExtResource("1_clw37")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Sword"]]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_jeemn")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Sword"]]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_v7ab1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
